@@ -46,6 +46,19 @@ function App() {
 
   const Questions = questions.data;
 
+  
+  function checkedQuestion(event){
+    console.log(event.target.checked, event.target.id);
+    axios.post(`${baseURL}/set-status`, {
+      id: event.target.id,
+      status: event.target.checked
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+  }
+
   return (
     <div>
 
@@ -66,6 +79,7 @@ function App() {
           <th>Level</th>
           <th>Topics</th>
           <th>Likes/Dislikes</th>
+          <th>Status</th>
         </tr>
 
         {
@@ -73,12 +87,13 @@ function App() {
             Questions.map((data, i) => {
               return (
 
-                <tr key={i}>
-                  <td>{i + 1}</td>
+                <tr key={data.questionFrontendId}>
+                  <td>{data.questionFrontendId}</td>
                   <td><a href={data.url}>{data.title}</a></td>
                   <td>{data.Difficulty}</td>
                   <td>{data.Topics}</td>
                   <td>{data.Likes + '/' + data.Dislikes}</td>
+                  <td><input type="checkbox" id={data.questionFrontendId}  onChange={(event) =>checkedQuestion(event)}  defaultChecked={data.Done}></input></td>
                 </tr>
 
               )
