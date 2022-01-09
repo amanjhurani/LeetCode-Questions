@@ -1,0 +1,25 @@
+.app-table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 75%;
+  
+  margin: 0 auto;
+}
+
+.level-buttons {
+  margin: 0 auto;
+  width: 600px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
